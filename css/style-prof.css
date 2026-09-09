@@ -45,6 +45,8 @@
 
     17 ANIMATIONS
 
+    17b PROJECT CARDS
+
     18 RESPONSIVE
 
 ====================================================*/
@@ -1120,6 +1122,195 @@ Compatible solo con navegadores basados en Chronium
 
 #backToTop:hover i{
     transform:translateY(-2px);
+}
+
+
+/*==================================================
+                TARJETAS DE PROYECTO
+==================================================*/
+
+.project-card{
+    background:var(--surface-light);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:2.5rem;
+    transition:var(--transition);
+}
+
+.project-card:hover{
+    border-color:var(--primary);
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+/* Portada */
+
+.project-media{
+    position:relative;
+    line-height:0;
+    background:var(--bg-dark);
+}
+
+.project-media img{
+    width:100%;
+    height:auto;
+    display:block;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    object-position:top center;
+}
+
+/* Etiqueta de estado sobre la portada */
+
+.project-status{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    padding:.35rem .9rem;
+    border-radius:999px;
+    font-size:.8rem;
+    font-weight:600;
+    line-height:1.6;
+    backdrop-filter:blur(6px);
+}
+
+.status-wip{
+    background:rgba(15,23,42,.88);
+    border:1px solid var(--warning);
+    color:#fcd34d;
+}
+
+.status-soon{
+    background:rgba(15,23,42,.88);
+    border:1px solid #94a3b8;
+    color:#e2e8f0;
+}
+
+.status-live{
+    background:rgba(15,23,42,.88);
+    border:1px solid var(--success);
+    color:#86efac;
+}
+
+/* Contenido */
+
+.project-body{
+    padding:2rem;
+}
+
+.project-card h3{
+    margin-top:0;
+    margin-bottom:.3rem;
+}
+
+.project-pitch{
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--text) !important;
+    margin-bottom:1rem;
+}
+
+/* Tecnologias */
+
+.tech-list{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem;
+    margin:1.5rem 0;
+    padding:0;
+}
+
+/* Detalle tecnico destacado */
+
+.project-highlight{
+    position:relative;
+    padding:1rem 1.2rem 1rem 3.1rem;
+    border-left:4px solid var(--primary);
+    border-radius:0 12px 12px 0;
+    background:var(--surface);
+    font-size:.95rem;
+}
+
+.project-highlight i{
+    position:absolute;
+    left:1.2rem;
+    top:1.25rem;
+    color:var(--primary);
+}
+
+.project-highlight code{
+    font-family:Consolas,Menlo,monospace;
+    font-size:.9em;
+    padding:.1rem .4rem;
+    border-radius:6px;
+    background:var(--bg-dark);
+    color:#93c5fd;
+}
+
+
+/* Galeria de capturas dentro de la tarjeta */
+
+.project-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1.2rem;
+    margin:1.8rem 0 0;
+}
+
+.project-gallery figure{
+    margin:0;
+}
+
+.project-gallery img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    object-position:top center;
+    border-radius:14px;
+    border:1px solid var(--border);
+}
+
+.project-gallery figcaption{
+    margin-top:.6rem;
+    font-size:.85rem;
+}
+
+/* Botones de la tarjeta */
+
+.project-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.8rem;
+    margin-top:1.8rem;
+}
+
+/* Boton inactivo: demo aun no publicada */
+
+.btn-soon{
+    border:2px dashed var(--border);
+    color:var(--text-light);
+    cursor:not-allowed;
+}
+
+.project-card .divider{
+    display:none;
+}
+
+@media(max-width:768px){
+
+    .project-body{
+        padding:1.5rem;
+    }
+
+    .project-actions .btn{
+        width:100%;
+        justify-content:center;
+    }
 }
 
 /*==================================================

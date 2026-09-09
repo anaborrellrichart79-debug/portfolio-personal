@@ -116,9 +116,9 @@
                     <div class="sidebar-card">
                         <nav>
                             <ul>
-                                <li><a href="#e-comerce">e-commerce: pequeño proyecto de tienda online (en desarrollo)</a></li>
-                                <li><a href="#hireFlow">HireFlow: 'Organiza tu camino al empleo ideal' (en desarrollo)</a></li>
-                                <li><a href="#focusFlow">FocusFlow: 'Anti-procrastinador inteligente' (próximamente)</a></li>
+                                <li><a href="#hireFlow">HireFlow: 'Organiza tu camino al empleo ideal'</a></li>
+                                <li><a href="#e-comerce">Mini e-commerce: tienda online en JavaScript puro</a></li>
+                                <li><a href="#ecommerceApi">Mini e-commerce API: API REST con Node.js y Express</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -127,46 +127,269 @@
 
                 </div>
 
-                <article class="fade-in">
-                    <h3 id="e-comerce">e-commerce</h3>
-                    <p>Descripción:<br>
-                    Proyecto enfocado en simular una experiencia real de compra online, trabajando desde el diseño del catálogo hasta la gestión del carrito.</p>
-                    <p>Tecnología aplicada:<br><strong>HTML, CSS y JavaScript</strong>.</p>
+                <!--
+                    TARJETA DE PROYECTO
+                    Estructura: portada -> titulo -> pitch -> descripcion ->
+                    tecnologias -> detalle tecnico -> botones (demo + codigo)
+                -->
 
-                    <a href="https://github.com/anaborrellrichart79-debug/mini-ecommerce"
-                    target="_blank"
-                    class="btn btn-primary"
-                    >Ver proyecto</a>
+                <article class="project-card fade-in">
+
+                    <div class="project-media">
+                        <img src="assets/projects/hireflow-login.jpg"
+                             alt="Pantalla de acceso de HireFlow, con selector de idioma y mascota de soporte"
+                             loading="lazy">
+                        <span class="project-status status-wip">
+                            <i class="fa-solid fa-code-branch"></i> En desarrollo
+                        </span>
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3 id="hireFlow">HireFlow</h3>
+                        <p class="project-pitch">Organiza tu camino al empleo ideal.</p>
+
+                        <p>Aplicación full stack para gestionar la búsqueda de empleo: postulaciones,
+                        entrevistas, contactos y calendario en un único panel. Incluye una API REST en
+                        Node.js con Express y una base de datos MySQL con esquema relacional, datos
+                        de prueba y colección de Postman para probar los endpoints.</p>
+
+                        <ul class="tech-list">
+                            <li class="tag">Node.js</li>
+                            <li class="tag">Express</li>
+                            <li class="tag">MySQL</li>
+                            <li class="tag">JavaScript ES6</li>
+                            <li class="tag">Postman</li>
+                        </ul>
+
+                        <p class="project-highlight">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            Modelado de la base de datos desde cero: usuarios (candidato y empresa),
+                            ofertas, entrevistas y eventos, con <code>schema.sql</code> y <code>seedData.sql</code>
+                            reproducibles.
+                        </p>
+
+                        <!--
+                            GALERIA: capturas de la aplicacion en marcha (frontend y datos de ejemplo).
+                            Para anadir mas, copia un <figure> y cambia src, alt y figcaption.
+                        -->
+                        <div class="project-gallery">
+                            <figure>
+                                <img src="assets/projects/hireflow-panel.jpg"
+                                     alt="Panel de inicio de HireFlow con el resumen de postulaciones, la próxima entrevista y los accesos rápidos"
+                                     loading="lazy">
+                                <figcaption>Panel con el resumen de la búsqueda</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/hireflow-ofertas.jpg"
+                                     alt="Listado de ofertas de empleo en HireFlow, con las ya postuladas marcadas"
+                                     loading="lazy">
+                                <figcaption>Ofertas disponibles y postulación</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/hireflow-postulaciones.jpg"
+                                     alt="Pantalla de postulaciones de HireFlow con el estado de cada proceso y el aviso de actualización"
+                                     loading="lazy">
+                                <figcaption>Seguimiento del estado de cada proceso</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/hireflow-calendario.jpg"
+                                     alt="Calendario semanal de HireFlow con las entrevistas repartidas de lunes a sábado"
+                                     loading="lazy">
+                                <figcaption>Calendario semanal de entrevistas</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="project-actions">
+                            <!-- HireFlow necesita servidor y base de datos: no se puede publicar en GitHub Pages.
+                                 Cuando grabes un GIF de la app funcionando, sustituye la portada de arriba. -->
+                            <a href="https://github.com/anaborrellrichart79-debug/hireflow"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-primary">
+                                <i class="fa-brands fa-github"></i> Ver código
+                            </a>
+                            <a href="https://github.com/anaborrellrichart79-debug/hireflow#readme"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-outline">
+                                <i class="fa-solid fa-book"></i> Documentación
+                            </a>
+                        </div>
+
+                    </div>
 
                     <div class="divider"></div>
 
                 </article>
 
-                <article class="fade-in">
-                    <h3 id="hireFlow">HireFlow</h3>
-                    <p>Herramienta diseñada para estructurar el proceso de búsqueda laboral, construida con una arquitectura preparada para futura integración con backend y base de datos SQL.</p>
+                <article class="project-card fade-in">
 
-                    <a href="https://github.com/anaborrellrichart79-debug/hireflow"
-                    target="_blank"
-                    class="btn btn-primary"
-                    >Ver proyecto</a>
+                    <div class="project-media">
+                        <img src="assets/projects/mini-ecommerce-catalogo.jpg"
+                             alt="Catalogo del Mini e-commerce con buscador, filtro por categorias y fichas de producto"
+                             loading="lazy">
+                        <span class="project-status status-wip">
+                            <i class="fa-solid fa-code-branch"></i> En desarrollo
+                        </span>
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3 id="e-comerce">Mini e-commerce</h3>
+                        <p class="project-pitch">Una experiencia de compra completa, sin frameworks.</p>
+
+                        <p>Tienda online que recorre el flujo real de compra: catálogo con buscador y
+                        filtro por categorías, ficha de producto, carrito persistente y proceso de
+                        checkout hasta la confirmación del pedido. La interfaz está hecha con
+                        JavaScript modular, sin frameworks; para el pago se integra la pasarela
+                        de Stripe.</p>
+
+                        <ul class="tech-list">
+                            <li class="tag">HTML5</li>
+                            <li class="tag">CSS3</li>
+                            <li class="tag">JavaScript (ES Modules)</li>
+                            <li class="tag">LocalStorage</li>
+                            <li class="tag">Fetch API</li>
+                            <li class="tag">Stripe</li>
+                        </ul>
+
+                        <p class="project-highlight">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            Arquitectura por capas (<code>api</code>, <code>servicios</code>,
+                            <code>ui</code>, <code>utiles</code>) que separa los datos de la interfaz,
+                            con el carrito persistido en <code>localStorage</code>.
+                        </p>
+
+                        <!--
+                            GALERIA: capturas adicionales del proyecto.
+                            Para anadir mas, copia un <figure> y cambia src, alt y figcaption.
+                        -->
+                        <div class="project-gallery">
+                            <figure>
+                                <img src="assets/projects/mini-ecommerce-carrito.jpg"
+                                     alt="Carrito del Mini e-commerce con tres productos anadidos y el total calculado"
+                                     loading="lazy">
+                                <figcaption>Carrito con persistencia en localStorage</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/mini-ecommerce-producto.jpg"
+                                     alt="Ficha de producto del Mini e-commerce con imagen, precio, descripción y botón de añadir al carrito"
+                                     loading="lazy">
+                                <figcaption>Ficha de producto servida por la API</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="project-actions">
+                            <!-- TODO demo: el catalogo consume la API en http://localhost:3000.
+                                 Para publicar una demo en GitHub Pages hay que apuntar esa URL a la
+                                 API desplegada (Render, Railway...). Cuando este lista, sustituye
+                                 este span por:
+                                 <a href="https://anaborrellrichart79-debug.github.io/mini-ecommerce/"
+                                    target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    <i class="fa-solid fa-up-right-from-square"></i> Ver demo</a> -->
+                            <span class="btn btn-soon" aria-disabled="true">
+                                <i class="fa-solid fa-clock"></i> Demo próximamente
+                            </span>
+                            <a href="https://github.com/anaborrellrichart79-debug/mini-ecommerce"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-outline">
+                                <i class="fa-brands fa-github"></i> Ver código
+                            </a>
+                        </div>
+
+                    </div>
 
                     <div class="divider"></div>
 
                 </article>
 
-                <article class="fade-in">
-                    <h3 id="focusFlow">FocusFlow</h3>
-                    <p>Aplicación desarrollada en React para combatir la procrastinación mediante gestión inteligente de tareas y seguimiento del progreso.</p>
+                <article class="project-card fade-in">
 
-                    <a href="https://github.com/anaborrellrichart79-debug/focusflow"
-                    target="_blank"
-                    class="btn btn-primary"
-                    >Ver proyecto</a>
+                    <div class="project-media">
+                        <img src="assets/projects/mini-ecommerce-api.svg"
+                             alt="Portada del proyecto Mini e-commerce API"
+                             loading="lazy">
+                        <span class="project-status status-wip">
+                            <i class="fa-solid fa-code-branch"></i> En desarrollo
+                        </span>
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3 id="ecommerceApi">Mini e-commerce API</h3>
+                        <p class="project-pitch">El backend que alimenta la tienda.</p>
+
+                        <p>API REST que sirve el catálogo de productos al Mini e-commerce. Separar el
+                        cliente del servidor me permitió trabajar rutas, controladores, CORS y el
+                        consumo de la API desde el frontend con <code>fetch</code>.</p>
+
+                        <ul class="tech-list">
+                            <li class="tag">Node.js</li>
+                            <li class="tag">Express 5</li>
+                            <li class="tag">CORS</li>
+                            <li class="tag">API REST</li>
+                        </ul>
+
+                        <p class="project-highlight">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            Proyecto pensado como pareja del Mini e-commerce: demuestra cómo comunico
+                            dos aplicaciones independientes mediante una API.
+                        </p>
+
+                        <div class="project-gallery">
+                            <figure>
+                                <img src="assets/projects/mini-ecommerce-api-respuesta.jpg"
+                                     alt="Respuesta JSON del endpoint GET /api/products con el catálogo completo"
+                                     loading="lazy">
+                                <figcaption>Respuesta de <code>GET /api/products</code></figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/anaborrellrichart79-debug/mini-ecommerce-api"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-primary">
+                                <i class="fa-brands fa-github"></i> Ver código
+                            </a>
+                        </div>
+
+                    </div>
 
                     <div class="divider"></div>
 
                 </article>
+
+                <!--
+                    FocusFlow queda fuera de momento: el repositorio solo tiene un README.
+                    Cuando tenga codigo, recupera esta tarjeta y anadela al indice de arriba.
+
+                <article class="project-card fade-in">
+                    <div class="project-media">
+                        <img src="assets/projects/focusflow.svg" alt="Portada del proyecto FocusFlow" loading="lazy">
+                        <span class="project-status status-soon"><i class="fa-solid fa-clock"></i> Proximamente</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 id="focusFlow">FocusFlow</h3>
+                        <p class="project-pitch">Anti-procrastinador inteligente.</p>
+                        <p>Aplicacion desarrollada en React para combatir la procrastinacion mediante
+                        gestion inteligente de tareas y seguimiento del progreso.</p>
+                        <ul class="tech-list">
+                            <li class="tag">React</li>
+                            <li class="tag">Hooks</li>
+                            <li class="tag">CSS3</li>
+                        </ul>
+                        <div class="project-actions">
+                            <a href="https://github.com/anaborrellrichart79-debug/focusflow" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                                <i class="fa-brands fa-github"></i> Ver codigo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                </article>
+                -->
 
             </section>
 

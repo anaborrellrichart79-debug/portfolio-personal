@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Mini e-commerce API">
+  <defs>
+    <linearGradient id="api-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <pattern id="api-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#334155" stroke-width="1" opacity=".35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#api-bg)"/>
+  <rect width="1200" height="900" fill="url(#api-grid)"/>
+  <circle cx="1020" cy="760" r="260" fill="#f59e0b" opacity=".10"/>
+
+  <g transform="translate(90 110)">
+    <rect width="150" height="34" rx="17" fill="#f59e0b" opacity=".20"/>
+    <text x="75" y="23" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#fcd34d" text-anchor="middle">BACKEND</text>
+  </g>
+
+  <text x="90" y="248" font-family="Inter, Segoe UI, sans-serif" font-size="66" font-weight="700" fill="#f8fafc">Mini e-commerce API</text>
+  <text x="90" y="304" font-family="Inter, Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#cbd5e1">API REST en Node.js + Express</text>
+
+  <g transform="translate(90 370)">
+    <rect width="1020" height="290" rx="16" fill="#0b1120" stroke="#334155"/>
+    <circle cx="34" cy="34" r="8" fill="#ef4444"/>
+    <circle cx="62" cy="34" r="8" fill="#f59e0b"/>
+    <circle cx="90" cy="34" r="8" fill="#22c55e"/>
+    <g font-family="Consolas, Menlo, monospace" font-size="23">
+      <text x="34" y="110" fill="#22c55e">GET</text>
+      <text x="112" y="110" fill="#cbd5e1">/api/products</text>
+      <text x="34" y="160" fill="#22c55e">GET</text>
+      <text x="112" y="160" fill="#cbd5e1">/api/products/:id</text>
+      <text x="34" y="210" fill="#22c55e">GET</text>
+      <text x="112" y="210" fill="#cbd5e1">/api/products/category/:category</text>
+      <text x="34" y="260" fill="#f59e0b">POST</text>
+      <text x="124" y="260" fill="#cbd5e1">/api/products</text>
+    </g>
+  </g>
+
+  <g font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#fcd34d">
+    <text x="90" y="742">Node.js</text>
+    <text x="250" y="742">Express 5</text>
+    <text x="430" y="742">CORS</text>
+    <text x="550" y="742">ES Modules</text>
+  </g>
+</svg>
