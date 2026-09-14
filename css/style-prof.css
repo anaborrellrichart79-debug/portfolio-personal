@@ -700,7 +700,7 @@ figure img{
     border:1px solid var(--border);
     box-shadow:var(--shadow);
     transition:.4s;
-    cursor:pointer;
+    cursor:zoom-in;
 }
 
 figure img:hover{

@@ -213,18 +213,71 @@ function themeSwitcher() {
 function lightbox() {
 
     const images = document.querySelectorAll("figure img");
+    const lightboxEl = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeButton = document.getElementById("lightbox-close");
 
-    if (!images.length) return;
+    if (!images.length || !lightboxEl || !lightboxImg) return;
+
+    function openLightbox(image) {
+
+        lightboxImg.src = image.src;
+        lightboxImg.alt = image.alt;
+        lightboxEl.classList.add("show");
+
+    }
+
+    function closeLightbox() {
+
+        lightboxEl.classList.remove("show");
+        lightboxImg.src = "";
+
+    }
 
     images.forEach(image => {
 
-        image.style.cursor = "zoom-in";
-
         image.addEventListener("click", () => {
 
-            window.open(image.src, "_blank");
+            openLightbox(image);
 
         });
+
+    });
+
+    if (closeButton) {
+
+        closeButton.addEventListener("click", closeLightbox);
+
+        closeButton.addEventListener("keydown", (event) => {
+
+            if (event.key === "Enter" || event.key === " ") {
+
+                event.preventDefault();
+                closeLightbox();
+
+            }
+
+        });
+
+    }
+
+    lightboxEl.addEventListener("click", (event) => {
+
+        if (event.target === lightboxEl) {
+
+            closeLightbox();
+
+        }
+
+    });
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape" && lightboxEl.classList.contains("show")) {
+
+            closeLightbox();
+
+        }
 
     });
 
