@@ -327,6 +327,8 @@ faders.forEach(article => {
 
 //configurar evento del formulario de contacto
 if (form) {
+    const submitButton = form.querySelector("button[type='submit']");
+
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -347,7 +349,42 @@ if (form) {
             return;
         }
 
-        alert("Gracias por su mensaje, " + name + "! Me pondré en contacto contigo pronto.");
-        form.reset();
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "Enviando...";
+
+        const formData = new FormData(form);
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                if (data.success) {
+
+                    alert("Gracias por su mensaje, " + name + "! Me pondré en contacto contigo pronto.");
+                    form.reset();
+
+                } else {
+
+                    alert("No se ha podido enviar el mensaje. Inténtalo de nuevo en unos minutos o escríbeme directamente a ana.borrell.richart79@gmail.com.");
+
+                }
+
+            })
+            .catch(() => {
+
+                alert("No se ha podido enviar el mensaje. Comprueba tu conexión o escríbeme directamente a ana.borrell.richart79@gmail.com.");
+
+            })
+            .finally(() => {
+
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+
+            });
     });
 }

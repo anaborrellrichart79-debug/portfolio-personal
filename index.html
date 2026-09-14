@@ -519,10 +519,14 @@
                     <p>ó rellenando el siguiente formulario:</p>
                 </div>
                 <div class="contact">
-                    <form id="contact-form" action="#" method="POST">
-                        <input type="text" id="name" placeholder="Tu nombre" required />
-                        <input type="email" id="email" placeholder="Tu email" required />
-                        <textarea id="message" placeholder="Mensaje" required></textarea>
+                    <form id="contact-form">
+                        <input type="hidden" name="access_key" value="fad82c2a-09ba-41a0-86b3-babe805963fc">
+                        <input type="hidden" name="subject" value="Nuevo mensaje desde el portfolio">
+                        <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
+
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+                        <input type="email" id="email" name="email" placeholder="Tu email" required />
+                        <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
                         <button type="submit">Enviar mensaje</button>
                     </form>
                 </div>

@@ -1453,6 +1453,14 @@ Compatible solo con navegadores basados en Chronium
     display: none;
 }
 
+.hidden-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
 .cookie-banner {
     position: fixed;
     left: 1rem;
