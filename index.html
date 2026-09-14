@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana Borrell | Desarrolladora Full Stack junior</title>
 
+    <!-- Google Consent Mode (por defecto denegado hasta que el usuario decida) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X62L2F7HH8"></script>
     <script>
@@ -520,7 +533,23 @@
 
     <footer>
         <p>&copy; 2026 Ana Borrell | Full Stack Web Developer | Responsive Websites | HTML, CSS, JavaScript, Node.js &amp; MySQL</p>
+        <p><button type="button" id="cookie-settings-link" class="link-button">Preferencias de cookies</button></p>
     </footer>
+
+    <!-- Banner de consentimiento de cookies -->
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" hidden>
+        <p>
+            Utilizo cookies de analítica (Google Analytics) para entender cómo se usa esta web.
+            Puedes aceptarlas o rechazarlas; no se activarán hasta que elijas. Más información en mi
+            <a href="mailto:ana.borrell.richart79@gmail.com">correo de contacto</a>.
+        </p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookie-reject" class="btn btn-outline">Rechazar</button>
+            <button type="button" id="cookie-accept" class="btn btn-primary">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="js/consent.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -273,26 +273,28 @@ faders.forEach(article => {
 
 
 //configurar evento del formulario de contacto
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+if (form) {
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
 
-//verifica los campos del formulario
-    if (!name || !email || !message) {
-        alert("Por favor, completa todos los campos antes de enviar el formulario.");
-        return;
-    }
+    //verifica los campos del formulario
+        if (!name || !email || !message) {
+            alert("Por favor, completa todos los campos antes de enviar el formulario.");
+            return;
+        }
 
-    //valida el formato del correo electónico
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("Por favor, escribe un correo válido.");
-        return;
-    }
+        //valida el formato del correo electónico
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Por favor, escribe un correo válido.");
+            return;
+        }
 
-    alert("Gracias por su mensaje, " + name + "! Me pondré en contacto contigo pronto.");
-    form.reset();
-});
+        alert("Gracias por su mensaje, " + name + "! Me pondré en contacto contigo pronto.");
+        form.reset();
+    });
+}

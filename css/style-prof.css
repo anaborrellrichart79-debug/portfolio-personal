@@ -1376,3 +1376,111 @@ Compatible solo con navegadores basados en Chronium
         grid-template-columns: 1fr;
     }
 }
+
+
+/*==================================================
+                PÁGINA 404
+==================================================*/
+
+.error-page-wrap {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.error-page {
+    padding: 3.5rem 2rem;
+}
+
+.error-page-content {
+    align-items: center;
+    text-align: center;
+    max-width: 480px;
+    margin: auto;
+    color: #ffffff;
+}
+
+.error-page-content h2 {
+    color: #ffffff;
+}
+
+.error-page-content p {
+    color: rgba(255, 255, 255, .85);
+}
+
+.error-illustration {
+    animation: error-float 3.5s ease-in-out infinite;
+}
+
+@keyframes error-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .error-illustration {
+        animation: none;
+    }
+}
+
+
+/*==================================================
+        BANNER DE CONSENTIMIENTO DE COOKIES
+==================================================*/
+
+.link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-light);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.link-button:hover {
+    color: var(--primary);
+}
+
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 10000;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: .9rem;
+    color: var(--text-light);
+}
+
+.cookie-banner-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
