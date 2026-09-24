@@ -113,6 +113,10 @@ async function grabar(nombre, salidaDir, guion, { W = 1024, H = 576 } = {}) {
 
   // El frame fijo inicial evita un video que arranca en blanco.
   try { await guion(u); }
+  catch (e) {
+    await page.screenshot({ path: path.join(__dirname, "error-" + nombre + ".png") }).catch(() => {});
+    throw e;
+  }
   finally {
     await page.waitForTimeout(600);
     grabando = false;

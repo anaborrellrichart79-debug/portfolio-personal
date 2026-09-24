@@ -3,10 +3,13 @@
   "private": true,
   "description": "Graba los videos de demo de los proyectos del portfolio",
   "scripts": {
-    "ecommerce": "node ecommerce.js"
+    "ecommerce": "node ecommerce.js",
+    "hireflow-datos": "node hireflow-datos.js",
+    "hireflow": "node hireflow.js"
   },
   "dependencies": {
     "ffmpeg-static": "^5.2.0",
+    "mysql2": "^3.24.4",
     "playwright-core": "^1.63.0"
   }
 }

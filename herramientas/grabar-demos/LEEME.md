@@ -28,6 +28,41 @@ cobra nada.
 El script deja en `assets/projects/` el vídeo (`mini-ecommerce-demo.mp4`) y su
 imagen de portada (`mini-ecommerce-demo-poster.jpg`).
 
+## HireFlow
+
+Se graba contra una base de datos aparte, `hireflow_demo`, con datos de ejemplo
+realistas (Lucía Navarro, candidata; Marta Gil, reclutadora de Nexa Digital). La
+base real de desarrollo, `hireflow`, no se toca.
+
+**Solo la primera vez**, crea la base vacía. En PowerShell (pide la contraseña
+de root de MySQL):
+
+```
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p -e "CREATE DATABASE IF NOT EXISTS hireflow_demo; GRANT ALL PRIVILEGES ON hireflow_demo.* TO 'hireflow_user'@'localhost';"
+```
+
+Las tablas no hace falta crearlas: la primera vez que se ejecuta,
+`hireflow-datos.js` copia en `hireflow_demo` la estructura de `hireflow` y los
+datos de las tablas de referencia (tipos de entrevista y contenido del
+asistente IA). De `hireflow` solo lee.
+
+**Para grabar:**
+
+1. Arranca HireFlow contra la base de demo, en PowerShell:
+   ```
+   cd E:\hireflow\backend
+   $env:DB_NAME = "hireflow_demo"; node server.js
+   ```
+2. Aquí: `npm run hireflow`.
+
+El script vacía `hireflow_demo` y la vuelve a rellenar antes de cada toma
+(`hireflow-datos.js`), porque la propia grabación crea una postulación y una
+entrevista. Solo puede vaciar `hireflow_demo`: si se conecta a otra base, se
+para. Para entrar a mano en la demo, la contraseña de todos los usuarios es
+`demo2026`.
+
+Deja en `assets/projects/` `hireflow-demo.mp4` y `hireflow-demo-poster.jpg`.
+
 ## Cómo funciona
 
 - `grabador.js` es la parte común: lanza Chrome, dibuja el cursor, captura la
