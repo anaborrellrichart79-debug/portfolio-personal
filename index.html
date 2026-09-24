@@ -85,7 +85,7 @@
         "jobTitle": "Desarrolladora Full Stack junior",
         "description": "Desarrolladora full stack junior especializada en frontend, con proyectos en HTML5, CSS3, JavaScript, Node.js, Express y MySQL.",
         "url": "https://anaborrellrichart79-debug.github.io/portfolio-personal/",
-        "image": "https://anaborrellrichart79-debug.github.io/portfolio-personal/assets/FotoAnaLinkedlm.PNG",
+        "image": "https://anaborrellrichart79-debug.github.io/portfolio-personal/assets/foto-ana-borrell.jpg",
         "email": "mailto:ana.borrell.richart79@gmail.com",
         "address": {
             "@type": "PostalAddress",
@@ -123,6 +123,20 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/style-prof.css">
+
+    <!--
+        Red de seguridad: las tarjetas .fade-in empiezan ocultas y es el
+        JavaScript quien las muestra. Sin JavaScript se quedarian en blanco,
+        asi que aqui se fuerzan a visibles.
+    -->
+    <noscript>
+        <style>
+            .fade-in{
+                opacity:1;
+                transform:none;
+            }
+        </style>
+    </noscript>
 
 </head>
 <body>
@@ -203,7 +217,17 @@
                     Mi objetivo es transformar ideas en proyectos digitales de calidad, aplicando mis conocimientos en <strong>HTML5, CSS3, JavaScript, Git</strong>, SQL y React.<br/>
                     Me considero resolutiva, trabajadora y con ganas de aprender continuamente. Además, disfruto del deporte al aire libre: el ciclocross y la bicicleta de carretera son mi fuente de energía y motivación.</p>
                     <p><a href="#projects">MIRA MIS PROYECTOS... <i class="fa-brands fa-github"></i></a></p>
-                    <img src="assets/FotoAnaLinkedlm.PNG" alt="Foto de Ana Borrell" width="200px" class="image-card cv">
+                    <!--
+                        width y height son el tamano real del archivo (400x490).
+                        Sirven para que el navegador reserve el hueco y la pagina
+                        no de un salto al cargar. El tamano con el que se ve lo
+                        decide el CSS (.cv).
+                    -->
+                    <img src="assets/foto-ana-borrell.jpg"
+                         alt="Foto de Ana Borrell"
+                         width="400"
+                         height="490"
+                         class="image-card cv">
 
                     <div class="divider"></div>
 

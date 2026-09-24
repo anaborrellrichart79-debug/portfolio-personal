@@ -737,6 +737,13 @@ figcaption{
 
 .cv {
     border-radius: 100%;
+
+    /*
+        El archivo mide 400px de ancho (el doble, para pantallas retina)
+        pero se muestra a 200px.
+    */
+    width: 200px;
+    height: auto;
 }
 
 
@@ -1491,4 +1498,37 @@ Compatible solo con navegadores basados en Chronium
     justify-content: flex-end;
     gap: .75rem;
     flex-wrap: wrap;
+}
+
+
+/*==================================================
+        APARICION AL HACER SCROLL (.fade-in)
+==================================================*/
+
+/*
+    Las tarjetas de proyecto entran desvanecidas y subiendo un poco.
+    El JS les anade la clase .visible cuando asoman por la pantalla.
+*/
+
+.fade-in{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.fade-in.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Si el usuario pide menos movimiento, se muestran sin animacion. */
+@media (prefers-reduced-motion: reduce){
+
+    .fade-in,
+    .fade-in.visible{
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+
 }

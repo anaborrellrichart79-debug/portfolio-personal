@@ -100,6 +100,56 @@ function revealAnimations() {
 }
 
 /*=========================================
+        APARICIÓN AL HACER SCROLL
+=========================================*/
+
+function fadeInOnScroll() {
+
+    const faders = document.querySelectorAll(".fade-in");
+
+    if (!faders.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                // Una vez mostrada, no hace falta seguir observándola.
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, {
+
+        // Con umbral 0 basta con que asome un pixel: las tarjetas son mas
+        // altas que la ventana y un umbral alto tardaba demasiado.
+        threshold: 0,
+
+        // El margen superior enorme hace que una tarjeta que ya ha quedado
+        // por encima de la pantalla siga contando como visible. Sin esto, un
+        // scroll muy rapido que la pase de largo la dejaria oculta para
+        // siempre, porque el observer no se vuelve a disparar.
+        // El -80px de abajo retrasa un poco la entrada, para que la animacion
+        // se aprecie.
+        rootMargin: "100000px 0px -80px 0px"
+
+    });
+
+    faders.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+}
+
+
+/*=========================================
             SCROLL SPY
 =========================================*/
 
@@ -300,30 +350,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealAnimations();
 
+    fadeInOnScroll();
+
     scrollSpy();
 
 });
 
 const greeting = "Hola, bienvenido a mi portafolio";
 const form = document.getElementById("contact-form");
-const faders = document.querySelectorAll(".fade-in");
 
 console.log(greeting);
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            entry.target.classList.add("visible");
-        } else {
-            entry.target.classList.remove("visible");
-        }
-    });
-});
-
-faders.forEach(article => {
-    appearOnScroll.observe(article);
-});
-
 
 //configurar evento del formulario de contacto
 if (form) {
