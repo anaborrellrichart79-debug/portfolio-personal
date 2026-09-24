@@ -1532,3 +1532,24 @@ Compatible solo con navegadores basados en Chronium
     }
 
 }
+
+
+/*==================================================
+        BOTON SECUNDARIO SOBRE EL HERO
+==================================================*/
+
+/*
+    El hero tiene fondo azul, asi que el .btn-outline normal
+    (borde y texto en el azul primario) quedaria invisible.
+    Dentro del hero se pinta en blanco.
+*/
+
+.hero .btn-outline{
+    border-color:#ffffff;
+    color:#ffffff;
+}
+
+.hero .btn-outline:hover{
+    background:#ffffff;
+    color:var(--primary-dark);
+}
