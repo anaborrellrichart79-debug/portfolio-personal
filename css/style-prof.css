@@ -1750,3 +1750,69 @@ Compatible solo con navegadores basados en Chronium
         padding:1rem;
     }
 }
+
+
+/*==================================================
+        VISOR DE VIDEOS DE DEMO
+==================================================*/
+
+.video-modal{
+    width:min(1000px, calc(100vw - 2rem));
+    max-height:calc(100vh - 2rem);
+    margin:auto;
+    padding:1.25rem;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--surface);
+    color:var(--text);
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+}
+
+.video-modal::backdrop{
+    background:rgba(0,0,0,.85);
+}
+
+.video-modal-cabecera{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:1rem;
+}
+
+.video-modal-cabecera h2{
+    margin:0;
+    font-size:1.2rem;
+}
+
+.video-modal-cerrar{
+    font-size:2rem;
+    line-height:1;
+    color:var(--text-light);
+    padding:0 .4rem;
+    border-radius:8px;
+}
+
+.video-modal-cerrar:hover{
+    color:var(--primary);
+}
+
+.video-modal video{
+    display:block;
+    width:100%;
+    aspect-ratio:16 / 9;
+    border-radius:12px;
+    background:#000;
+}
+
+.video-modal-descripcion{
+    margin:1rem 0 0;
+    font-size:.9rem;
+}
+
+@media(max-width:768px){
+
+    .video-modal{
+        padding:.9rem;
+    }
+}

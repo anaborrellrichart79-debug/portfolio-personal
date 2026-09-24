@@ -450,16 +450,16 @@
                         </div>
 
                         <div class="project-actions">
-                            <!-- TODO demo: el catalogo consume la API en http://localhost:3000.
-                                 Para publicar una demo en GitHub Pages hay que apuntar esa URL a la
-                                 API desplegada (Render, Railway...). Cuando este lista, sustituye
-                                 este span por:
-                                 <a href="https://anaborrellrichart79-debug.github.io/mini-ecommerce/"
-                                    target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                                    <i class="fa-solid fa-up-right-from-square"></i> Ver demo</a> -->
-                            <span class="btn btn-soon" aria-disabled="true">
-                                <i class="fa-solid fa-clock"></i> Demo próximamente
-                            </span>
+                            <!-- La demo es un video: la tienda necesita su API y Stripe, que no
+                                 pueden vivir en GitHub Pages. Se regraba con herramientas/grabar-demos. -->
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    data-video="assets/projects/mini-ecommerce-demo.mp4"
+                                    data-poster="assets/projects/mini-ecommerce-demo-poster.jpg"
+                                    data-titulo="Demo del Mini e-commerce"
+                                    data-descripcion="Recorrido de 40 segundos sin sonido: catálogo servido por la API con filtro por categorías, ficha de producto, carrito persistente y pago con la tarjeta de prueba de Stripe hasta la confirmación del pedido.">
+                                <i class="fa-solid fa-play"></i> Ver demo en vídeo
+                            </button>
                             <a href="https://github.com/anaborrellrichart79-debug/mini-ecommerce"
                                target="_blank"
                                rel="noopener noreferrer"
@@ -637,6 +637,19 @@
             <button type="button" id="cookie-accept" class="btn btn-primary">Aceptar</button>
         </div>
     </div>
+
+    <!--
+        Visor de videos de demo. <dialog> con showModal() ya atrapa el foco,
+        se cierra con Esc y devuelve el foco al boton que lo abrio.
+    -->
+    <dialog id="video-modal" class="video-modal" aria-labelledby="video-modal-titulo">
+        <div class="video-modal-cabecera">
+            <h2 id="video-modal-titulo"></h2>
+            <button type="button" class="video-modal-cerrar" aria-label="Cerrar vídeo">&times;</button>
+        </div>
+        <video controls playsinline muted preload="none"></video>
+        <p class="video-modal-descripcion"></p>
+    </dialog>
 
     <!-- Lightbox de imágenes -->
     <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">

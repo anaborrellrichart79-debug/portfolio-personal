@@ -431,11 +431,58 @@ function lightbox() {
             INICIALIZACIÓN
 =========================================*/
 
+/*=========================================
+            VIDEOS DE DEMO
+=========================================*/
+
+/*
+    Cualquier boton con data-video abre ese video en el <dialog>.
+    El src se pone al abrir y se quita al cerrar: asi el video no se
+    descarga hasta que alguien lo pide y deja de bajar al cerrarlo.
+*/
+function videoModal() {
+
+    const modal = document.getElementById("video-modal");
+    const botones = document.querySelectorAll("[data-video]");
+
+    if (!modal || !botones.length || typeof modal.showModal !== "function") return;
+
+    const video = modal.querySelector("video");
+    const titulo = modal.querySelector("#video-modal-titulo");
+    const descripcion = modal.querySelector(".video-modal-descripcion");
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            titulo.textContent = boton.dataset.titulo || "Demo";
+            descripcion.textContent = boton.dataset.descripcion || "";
+            video.poster = boton.dataset.poster || "";
+            video.src = boton.dataset.video;
+            modal.showModal();
+            video.play().catch(() => {});
+        });
+    });
+
+    modal.addEventListener("close", () => {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+    });
+
+    modal.querySelector(".video-modal-cerrar").addEventListener("click", () => modal.close());
+
+    // Clic fuera del contenido (en el fondo oscuro) = cerrar
+    modal.addEventListener("click", e => {
+        if (e.target === modal) modal.close();
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
     themeSwitcher();
 
     lightbox();
+
+    videoModal();
 
     scrollTopButton();
 
