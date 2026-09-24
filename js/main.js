@@ -1,4 +1,46 @@
 /*=========================================
+        GESTOR COMUN DE SCROLL
+=========================================*/
+
+/*
+    Antes habia tres listeners de scroll independientes (boton subir,
+    barra de progreso y scroll spy) y cada uno hacia calculos en cada
+    pixel de desplazamiento. Ahora hay uno solo, y el trabajo se agrupa
+    dentro de requestAnimationFrame para que se ejecute como mucho una
+    vez por fotograma, no decenas por segundo.
+*/
+
+const tareasDeScroll = [];
+let scrollProgramado = false;
+
+function alHacerScroll(tarea) {
+
+    tareasDeScroll.push(tarea);
+
+    // Se ejecuta una vez al registrarse, para partir del estado correcto.
+    tarea();
+
+}
+
+// passive: true le dice al navegador que no vamos a bloquear el scroll,
+// lo que le permite desplazar la pagina de forma mas fluida.
+window.addEventListener("scroll", () => {
+
+    if (scrollProgramado) return;
+
+    scrollProgramado = true;
+
+    requestAnimationFrame(() => {
+
+        tareasDeScroll.forEach(tarea => tarea());
+        scrollProgramado = false;
+
+    });
+
+}, { passive: true });
+
+
+/*=========================================
             BOTÓN SUBIR
 =========================================*/
 
@@ -8,7 +50,9 @@ function scrollTopButton() {
 
     if (!button) return;
 
-    window.addEventListener("scroll", () => {
+    // Se apunta al gestor comun de scroll en vez de crear su
+    // propio listener: ver alPasarPorScroll() mas abajo.
+    alHacerScroll(() => {
 
         if (window.scrollY > 400) {
 
@@ -46,7 +90,7 @@ function progressBar() {
 
     if (!bar) return;
 
-    window.addEventListener("scroll", () => {
+    alHacerScroll(() => {
 
         const scroll =
             document.documentElement.scrollTop;
@@ -161,7 +205,7 @@ function scrollSpy() {
 
     if (!sections.length || !links.length) return;
 
-    window.addEventListener("scroll", () => {
+    alHacerScroll(() => {
 
         let current = "";
 
@@ -169,7 +213,7 @@ function scrollSpy() {
 
             const top = section.offsetTop - 140;
 
-            if (pageYOffset >= top) {
+            if (window.scrollY >= top) {
 
                 current = section.getAttribute("id");
 
@@ -208,8 +252,18 @@ function themeSwitcher() {
 
     const savedTheme = localStorage.getItem("theme");
 
+    /*
+        Si nunca ha elegido tema, se respeta la preferencia que tenga
+        configurada en su sistema operativo. Si ya eligio, manda su
+        eleccion guardada.
+    */
+    const prefiereClaro = window.matchMedia
+        && window.matchMedia("(prefers-color-scheme: light)").matches;
+
+    const temaInicial = savedTheme || (prefiereClaro ? "light" : "dark");
+
     // Aplicar tema guardado
-    if (savedTheme === "light") {
+    if (temaInicial === "light") {
 
         document.body.classList.add("light");
 
@@ -269,11 +323,19 @@ function lightbox() {
 
     if (!images.length || !lightboxEl || !lightboxImg) return;
 
+    // Guarda quien tenia el foco para devolverselo al cerrar.
+    let elementoPrevio = null;
+
     function openLightbox(image) {
+
+        elementoPrevio = document.activeElement;
 
         lightboxImg.src = image.src;
         lightboxImg.alt = image.alt;
         lightboxEl.classList.add("show");
+
+        // El foco entra en el dialogo, en el boton de cerrar.
+        if (closeButton) closeButton.focus();
 
     }
 
@@ -282,13 +344,33 @@ function lightbox() {
         lightboxEl.classList.remove("show");
         lightboxImg.src = "";
 
+        // Devuelve el foco a la imagen desde la que se abrio.
+        if (elementoPrevio && typeof elementoPrevio.focus === "function") {
+            elementoPrevio.focus();
+        }
+
     }
 
     images.forEach(image => {
 
+        // tabindex y rol para poder abrirlo tambien con el teclado.
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("role", "button");
+
         image.addEventListener("click", () => {
 
             openLightbox(image);
+
+        });
+
+        image.addEventListener("keydown", (event) => {
+
+            if (event.key === "Enter" || event.key === " ") {
+
+                event.preventDefault();
+                openLightbox(image);
+
+            }
 
         });
 
@@ -323,9 +405,20 @@ function lightbox() {
 
     document.addEventListener("keydown", (event) => {
 
-        if (event.key === "Escape" && lightboxEl.classList.contains("show")) {
+        if (!lightboxEl.classList.contains("show")) return;
+
+        if (event.key === "Escape") {
 
             closeLightbox();
+
+        }
+
+        // Mientras el dialogo este abierto, el tabulador no debe
+        // escaparse al resto de la pagina que hay detras.
+        if (event.key === "Tab" && closeButton) {
+
+            event.preventDefault();
+            closeButton.focus();
 
         }
 
@@ -356,10 +449,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const greeting = "Hola, bienvenido a mi portafolio";
 const form = document.getElementById("contact-form");
 
-console.log(greeting);
+/*
+    Muestra un aviso dentro de la pagina. Sustituye a los alert(),
+    que bloquean el navegador y quedan poco profesionales.
+    El elemento tiene role="status", asi que los lectores de pantalla
+    lo anuncian solos al cambiar su contenido.
+*/
+function mostrarAviso(texto, tipo) {
+
+    const aviso = document.getElementById("form-status");
+
+    if (!aviso) return;
+
+    aviso.textContent = texto;
+    aviso.className = "form-status visible " + tipo;
+
+}
 
 //configurar evento del formulario de contacto
 if (form) {
@@ -374,14 +481,14 @@ if (form) {
 
     //verifica los campos del formulario
         if (!name || !email || !message) {
-            alert("Por favor, completa todos los campos antes de enviar el formulario.");
+            mostrarAviso("Por favor, completa todos los campos antes de enviar el formulario.", "error");
             return;
         }
 
         //valida el formato del correo electónico
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            alert("Por favor, escribe un correo válido.");
+            mostrarAviso("Por favor, escribe un correo válido.", "error");
             return;
         }
 
@@ -401,19 +508,19 @@ if (form) {
 
                 if (data.success) {
 
-                    alert("Gracias por su mensaje, " + name + "! Me pondré en contacto contigo pronto.");
+                    mostrarAviso("¡Gracias por tu mensaje, " + name + "! Me pondré en contacto contigo pronto.", "exito");
                     form.reset();
 
                 } else {
 
-                    alert("No se ha podido enviar el mensaje. Inténtalo de nuevo en unos minutos o escríbeme directamente a ana.borrell.richart79@gmail.com.");
+                    mostrarAviso("No se ha podido enviar el mensaje. Inténtalo de nuevo en unos minutos o escríbeme directamente a ana.borrell.richart79@gmail.com.", "error");
 
                 }
 
             })
             .catch(() => {
 
-                alert("No se ha podido enviar el mensaje. Comprueba tu conexión o escríbeme directamente a ana.borrell.richart79@gmail.com.");
+                mostrarAviso("No se ha podido enviar el mensaje. Comprueba tu conexión o escríbeme directamente a ana.borrell.richart79@gmail.com.", "error");
 
             })
             .finally(() => {

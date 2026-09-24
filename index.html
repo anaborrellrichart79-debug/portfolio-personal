@@ -154,6 +154,13 @@
 
 </head>
 <body>
+    <!--
+        Enlace de salto: invisible hasta que recibe el foco con el
+        tabulador. Permite a quien navega con teclado saltarse la
+        navegacion e ir directo al contenido.
+    -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL4X248T"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -220,9 +227,9 @@
     </section>
 
     <div class="container">
-        <aside class="sidebar">
+        <aside class="sidebar" aria-label="Navegacion de la pagina">
             <div class="sidebar-card">
-                <nav>
+                <nav aria-label="Secciones de la web">
                     <ul>
                         <li><a href="#start"><i class="fa-solid fa-circle-check"></i> Presentación</a></li>
                         <li><a href="#projects"><i class="fa-solid fa-book-open"></i> Proyectos</a></li>
@@ -232,7 +239,7 @@
             </div>
         </aside>
 
-        <main>
+        <main id="main-content">
 
             <section id="start" class="card">
                 <div class="section-header">
@@ -276,7 +283,7 @@
                     -->
 
                     <div class="sidebar-card">
-                        <nav>
+                        <nav aria-label="Indice de proyectos">
                             <ul>
                                 <li><a href="#hireFlow">HireFlow: 'Organiza tu camino al empleo ideal'</a></li>
                                 <li><a href="#e-comerce">Mini e-commerce: tienda online en JavaScript puro</a></li>
@@ -575,10 +582,33 @@
                         <input type="hidden" name="subject" value="Nuevo mensaje desde el portfolio">
                         <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
 
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required />
-                        <input type="email" id="email" name="email" placeholder="Tu email" required />
+                        <!--
+                            Cada campo lleva su etiqueta. Antes solo tenían
+                            placeholder, que un lector de pantalla no siempre
+                            anuncia y que desaparece al escribir. Las etiquetas
+                            van ocultas a la vista (clase .visually-hidden) para
+                            no cambiar el diseño, pero sí las leen los lectores
+                            de pantalla y amplían la zona pulsable del campo.
+                        -->
+                        <label for="name" class="visually-hidden">Tu nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre"
+                               autocomplete="name" required />
+
+                        <label for="email" class="visually-hidden">Tu correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="Tu email"
+                               autocomplete="email" required />
+
+                        <label for="message" class="visually-hidden">Tu mensaje</label>
                         <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
+
                         <button type="submit">Enviar mensaje</button>
+
+                        <!--
+                            Aquí aparecen los avisos de envío. role="status" con
+                            aria-live hace que un lector de pantalla los anuncie
+                            sin interrumpir lo que esté leyendo.
+                        -->
+                        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </section>
