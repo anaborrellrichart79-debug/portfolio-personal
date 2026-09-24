@@ -290,6 +290,8 @@ header{
     gap:.8rem;
     font-size:2rem;
     font-weight:700;
+    /* La cabecera es oscura en los dos temas, asi que el titulo va siempre en blanco. */
+    color:#ffffff;
 }
 
 .header-content i{
@@ -1647,4 +1649,98 @@ Compatible solo con navegadores basados en Chronium
     background:rgba(239,68,68,.12);
     border-left-color:var(--danger);
     color:var(--danger);
+}
+
+
+/*==================================================
+        PÁGINA DE PRIVACIDAD Y COOKIES
+==================================================*/
+
+/*
+    .container es una rejilla de dos columnas (menu lateral + contenido).
+    Esta pagina no tiene menu lateral, asi que sin esto el texto
+    entero se meteria en la columna estrecha de 280px.
+*/
+.legal-wrap{
+    display:block;
+    max-width:860px;
+}
+
+/* Una tarjeta tan larga no debe moverse al pasar el raton por encima. */
+.legal-wrap .card:hover{
+    transform:none;
+}
+
+.legal-fecha{
+    font-size:.9rem;
+    color:var(--text-light);
+}
+
+.legal{
+    line-height:1.75;
+}
+
+.legal p{
+    margin-bottom:1rem;
+}
+
+.legal h4{
+    margin-top:1.5rem;
+    margin-bottom:.5rem;
+    color:var(--text);
+}
+
+.legal a:not(.btn){
+    color:var(--primary);
+    overflow-wrap:anywhere;
+}
+
+.legal code{
+    background:var(--surface-light);
+    padding:.1rem .4rem;
+    border-radius:6px;
+    font-size:.9em;
+}
+
+/* En movil la tabla se desplaza de lado en lugar de romper la pagina. */
+.tabla-scroll{
+    overflow-x:auto;
+    margin:1.5rem 0;
+}
+
+.legal-tabla{
+    margin:0;
+    min-width:540px;
+    font-size:.95rem;
+}
+
+.legal-tabla th{
+    color:#ffffff;
+    text-align:left;
+}
+
+.legal-tabla td{
+    color:var(--text-light);
+    vertical-align:top;
+}
+
+.legal-lista{
+    margin:0 0 1rem 1.25rem;
+    color:var(--text-light);
+}
+
+.legal-lista li{
+    margin-bottom:.6rem;
+}
+
+.legal-nota{
+    font-size:.9rem;
+    font-style:italic;
+}
+
+@media(max-width:768px){
+
+    .legal-wrap{
+        padding:1rem;
+    }
 }
