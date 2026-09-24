@@ -68,6 +68,9 @@
 --primary:#3b82f6;
 --primary-hover:#2563eb;
 
+/* Subtitulos de las tarjetas: azul claro sobre fondo oscuro */
+--heading-accent:#93c5fd;
+
 --text:#f8fafc;
 --text-light:#cbd5e1;
 
@@ -116,6 +119,9 @@ body.light{
     --text-light:#334155;
 
     --border:#cbd5e1;
+
+    /* El azul claro no se lee sobre blanco (1,8:1). Este da 6,7:1. */
+    --heading-accent:#1d4ed8;
 }
 
 /* ====================================
@@ -502,7 +508,7 @@ main{
 .card h3{
     margin-top:2rem;
     margin-bottom:.8rem;
-    color:#93c5fd;
+    color:var(--heading-accent);
 }
 
 .card p{
