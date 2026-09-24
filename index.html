@@ -18,16 +18,18 @@
       });
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X62L2F7HH8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!--
+        Google Tag Manager
+        ------------------
+        Toda la medicion pasa por aqui. El contenedor GTM-NL4X248T lleva
+        dentro la etiqueta base de Google Analytics (G-X62L2F7HH8) y los
+        eventos personalizados (clic en GitHub, clic en contacto y envio
+        del formulario).
 
-      gtag('config', 'G-X62L2F7HH8');
-    </script>
-
+        Antes habia ademas un script suelto de gtag.js con ese mismo
+        identificador: se cargaban dos instancias de Analytics a la vez y
+        los eventos de interaccion se contaban por duplicado. Se quito.
+    -->
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
