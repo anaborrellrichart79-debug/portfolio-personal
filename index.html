@@ -305,11 +305,11 @@
                 <article class="project-card fade-in">
 
                     <div class="project-media">
-                        <img src="assets/projects/hireflow-login.jpg"
-                             alt="Pantalla de acceso de HireFlow, con selector de idioma y mascota de soporte"
+                        <img src="assets/projects/hireflow-empresa-kanban.jpg"
+                             alt="Tablero Kanban de HireFlow en el que la empresa mueve a los candidatos por fases, con el CV de una candidata desplegado"
                              loading="lazy">
-                        <span class="project-status status-wip">
-                            <i class="fa-solid fa-code-branch"></i> En desarrollo
+                        <span class="project-status status-live">
+                            <i class="fa-solid fa-circle-check"></i> Terminado
                         </span>
                     </div>
 
@@ -318,52 +318,59 @@
                         <h3 id="hireFlow">HireFlow</h3>
                         <p class="project-pitch">Organiza tu camino al empleo ideal.</p>
 
-                        <p>Aplicación full stack para gestionar la búsqueda de empleo: postulaciones,
-                        entrevistas, contactos y calendario en un único panel. Incluye una API REST en
-                        Node.js con Express y una base de datos MySQL con esquema relacional, datos
-                        de prueba y colección de Postman para probar los endpoints.</p>
+                        <p>Aplicación full stack para la búsqueda de empleo, desde los dos lados. Quien
+                        busca trabajo encuentra ofertas, se postula, sigue sus procesos en un tablero y
+                        consulta a un asistente si su CV encaja con una oferta. Las empresas publican
+                        ofertas, mueven a los candidatos por las fases arrastrando tarjetas en un Kanban
+                        y agendan entrevistas en un calendario. En español, inglés, francés e italiano,
+                        instalable como app (PWA) y adaptada al móvil.</p>
 
                         <ul class="tech-list">
                             <li class="tag">Node.js</li>
                             <li class="tag">Express</li>
                             <li class="tag">MySQL</li>
                             <li class="tag">JavaScript ES6</li>
-                            <li class="tag">Postman</li>
+                            <li class="tag">Playwright</li>
+                            <li class="tag">GitHub Actions</li>
                         </ul>
 
                         <p class="project-highlight">
                             <i class="fa-solid fa-lightbulb"></i>
-                            Modelado de la base de datos desde cero: usuarios (candidato y empresa),
-                            ofertas, entrevistas y eventos, con <code>schema.sql</code> y <code>seedData.sql</code>
-                            reproducibles.
+                            Privacidad y calidad desde el diseño: el candidato decide, oferta a oferta,
+                            si comparte su contacto y su CV, y puede retirarlo cuando quiera. Nadie ve
+                            datos de otro usuario (la comprobación va en cada consulta SQL), la
+                            accesibilidad está auditada con axe-core y 127 pruebas automáticas se
+                            ejecutan en cada cambio.
                         </p>
 
                         <!--
-                            GALERIA: capturas de la aplicacion en marcha (frontend y datos de ejemplo).
+                            GALERIA: capturas de la aplicacion en marcha, con datos ficticios.
+                            Salen de HireFlow con "npm run demo:screenshots" (docs/screenshots/),
+                            pasadas a JPG de 1200 px de ancho.
                             Para anadir mas, copia un <figure> y cambia src, alt y figcaption.
                         -->
                         <div class="project-gallery">
                             <figure>
-                                <img src="assets/projects/hireflow-panel.jpg"
-                                     alt="Panel de inicio de HireFlow con el resumen de postulaciones, la próxima entrevista y los accesos rápidos"
+                                <img src="assets/projects/hireflow-empresa-panel.jpg"
+                                     alt="Panel de la empresa en HireFlow con métricas, embudo de selección y postulantes por oferta"
                                      loading="lazy">
-                                <figcaption>Panel con el resumen de la búsqueda</figcaption>
+                                <figcaption>Panel de la empresa con el embudo de selección</figcaption>
                             </figure>
                             <figure>
-                                <img src="assets/projects/hireflow-ofertas.jpg"
-                                     alt="Listado de ofertas de empleo en HireFlow, con las ya postuladas marcadas"
+                                <img src="assets/projects/hireflow-candidata-ofertas.jpg"
+                                     alt="Listado de ofertas de HireFlow con buscador y filtros por ciudad y tipo de contrato"
                                      loading="lazy">
-                                <figcaption>Ofertas disponibles y postulación</figcaption>
+                                <figcaption>Ofertas con buscador y filtros</figcaption>
                             </figure>
                             <figure>
-                                <img src="assets/projects/hireflow-postulaciones.jpg"
-                                     alt="Pantalla de postulaciones de HireFlow con el estado de cada proceso y el aviso de actualización"
+                                <img src="assets/projects/hireflow-candidata-asistente.jpg"
+                                     alt="Asistente de HireFlow comparando el CV de la candidata con una oferta"
                                      loading="lazy">
-                                <figcaption>Seguimiento del estado de cada proceso</figcaption>
+                                <figcaption>Asistente que compara el CV con la oferta</figcaption>
                             </figure>
                             <figure>
-                                <img src="assets/projects/hireflow-calendario.jpg"
-                                     alt="Calendario semanal de HireFlow con las entrevistas repartidas de lunes a sábado"
+                                <img src="assets/projects/hireflow-empresa-calendario.jpg"
+                                     alt="Calendario semanal de entrevistas de la empresa en HireFlow"
                                      loading="lazy">
                                 <figcaption>Calendario semanal de entrevistas</figcaption>
                             </figure>

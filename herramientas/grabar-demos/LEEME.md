@@ -30,6 +30,19 @@ imagen de portada (`mini-ecommerce-demo-poster.jpg`).
 
 ## HireFlow
 
+> **Aviso (septiembre de 2026): el vídeo de HireFlow ya no se graba aquí.**
+>
+> El vídeo que hay ahora en el portfolio (`assets/projects/hireflow-demo.mp4`,
+> 90 segundos, con subtítulos) se graba desde el propio repositorio de HireFlow,
+> con `npm run demo:video` (instrucciones en su `docs/demoVideo.md`). Ese
+> comando deja un MP4 a 1080p en `demo-output/`; para la web se pasa a 720p
+> con ffmpeg (`-vf scale=1280:720 -crf 27 -preset slow -movflags +faststart`,
+> unos 2 MB) y se copia aquí junto con su portada.
+>
+> **No ejecutes `npm run hireflow`**: graba el vídeo antiguo, de antes de los
+> últimos cambios de la app, y **sustituiría** al nuevo. Lo que sigue se deja
+> solo como referencia.
+
 Se graba contra una base de datos aparte, `hireflow_demo`, con datos de ejemplo
 realistas (Lucía Navarro, candidata; Marta Gil, reclutadora de Nexa Digital). La
 base real de desarrollo, `hireflow`, no se toca.

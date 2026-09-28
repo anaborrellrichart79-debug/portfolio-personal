@@ -1,3 +1,11 @@
+// AVISO: este guion graba el video ANTIGUO de HireFlow y sobrescribe el nuevo.
+// El video actual se graba desde el repositorio de HireFlow con "npm run demo:video"
+// (ver LEEME.md). Para usarlo igualmente: GRABAR_VIDEO_ANTIGUO=1 npm run hireflow
+if (!process.env.GRABAR_VIDEO_ANTIGUO) {
+  console.error("Este guion graba el video antiguo de HireFlow y sustituiria al nuevo. Lee LEEME.md.");
+  process.exit(1);
+}
+
 const { grabar } = require("./grabador");
 const { execFileSync } = require("child_process");
 const ffmpeg = require("ffmpeg-static");
