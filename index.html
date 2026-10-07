@@ -46,7 +46,7 @@
         (las rutas relativas no las resuelven los rastreadores) y en
         formato apaisado 1200x627.
     -->
-    <meta name="description" content="Portfolio de Ana Borrell, desarrolladora full stack junior. Proyectos con HTML5, CSS3, JavaScript, Node.js, Express y MySQL: HireFlow, Mini e-commerce y su API REST.">
+    <meta name="description" content="Portfolio de Ana Borrell, desarrolladora full stack junior. Proyectos con React, TypeScript, Node.js y SQL: FocusFlow (app publicada), HireFlow, Mini e-commerce y su API REST.">
     <meta name="author" content="Ana Borrell Richart">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0f172a">
@@ -71,7 +71,7 @@
     <meta property="og:site_name" content="Portfolio de Ana Borrell">
     <meta property="og:url" content="https://anaborrellrichart79-debug.github.io/portfolio-personal/">
     <meta property="og:title" content="Ana Borrell | Desarrolladora Full Stack junior">
-    <meta property="og:description" content="Portfolio con mis proyectos personales: HireFlow, un gestor de busqueda de empleo full stack, un Mini e-commerce en JavaScript puro y su API REST en Node.js.">
+    <meta property="og:description" content="Portfolio con mis proyectos personales: FocusFlow, una app de productividad publicada, HireFlow, un gestor de busqueda de empleo full stack, y un Mini e-commerce con su API REST.">
     <meta property="og:image" content="https://anaborrellrichart79-debug.github.io/portfolio-personal/assets/og-portfolio.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -81,7 +81,7 @@
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ana Borrell | Desarrolladora Full Stack junior">
-    <meta name="twitter:description" content="Portfolio con mis proyectos personales: HireFlow, un Mini e-commerce en JavaScript puro y su API REST en Node.js.">
+    <meta name="twitter:description" content="Portfolio con mis proyectos personales: FocusFlow, HireFlow y un Mini e-commerce con su API REST.">
     <meta name="twitter:image" content="https://anaborrellrichart79-debug.github.io/portfolio-personal/assets/og-portfolio.jpg">
 
     <!--
@@ -120,6 +120,9 @@
             "Express",
             "MySQL",
             "React",
+            "TypeScript",
+            "NestJS",
+            "PostgreSQL",
             "Git"
         ],
         "knowsLanguage": "es"
@@ -285,6 +288,7 @@
                     <div class="sidebar-card">
                         <nav aria-label="Indice de proyectos">
                             <ul>
+                                <li><a href="#focusFlow">FocusFlow: app para organizar tareas, objetivos y tiempo (publicada)</a></li>
                                 <li><a href="#hireFlow">HireFlow: 'Organiza tu camino al empleo ideal'</a></li>
                                 <li><a href="#e-comerce">Mini e-commerce: tienda online en JavaScript puro</a></li>
                                 <li><a href="#ecommerceApi">Mini e-commerce API: API REST con Node.js y Express</a></li>
@@ -301,6 +305,102 @@
                     Estructura: portada -> titulo -> pitch -> descripcion ->
                     tecnologias -> detalle tecnico -> botones (demo + codigo)
                 -->
+
+                <article class="project-card fade-in">
+
+                    <div class="project-media">
+                        <img src="assets/projects/focusflow-portada.png"
+                             alt="FocusFlow: organiza tus tareas, objetivos y tu tiempo, junto a la agenda mensual de la app"
+                             loading="lazy">
+                        <span class="project-status status-live">
+                            <i class="fa-solid fa-circle-check"></i> Publicada
+                        </span>
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3 id="focusFlow">FocusFlow</h3>
+                        <p class="project-pitch">Organiza tus tareas, objetivos y tu tiempo en un solo sitio.</p>
+
+                        <p>Aplicación de productividad publicada y en producción, con cobro de suscripciones. Reúne
+                        objetivos y tareas, agenda, tablero Kanban, matriz de Eisenhower, Pomodoro,
+                        recordatorios y revisión semanal con estadísticas. Se sincroniza con Google
+                        Calendar e importa los trabajos de Google Classroom. Tiene modo escolar con horario,
+                        exámenes y deberes, y cuentas familiares con consentimiento parental para menores.
+                        El plan Plus añade ayuda de IA: dividir tareas en pasos o leer un horario desde
+                        una foto. En seis idiomas (castellano, valenciano, catalán, gallego, euskera e
+                        inglés), instalable como app (PWA) y con avisos en el móvil.</p>
+
+                        <ul class="tech-list">
+                            <li class="tag">React</li>
+                            <li class="tag">TypeScript</li>
+                            <li class="tag">Redux Toolkit</li>
+                            <li class="tag">Tailwind CSS</li>
+                            <li class="tag">NestJS</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Prisma</li>
+                            <li class="tag">Stripe</li>
+                            <li class="tag">Google APIs</li>
+                            <li class="tag">Claude (IA)</li>
+                        </ul>
+
+                        <p class="project-highlight">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            De la idea a producción: desplegada en un servidor propio en la UE con
+                            nginx, HTTPS y copias diarias; cobro de suscripciones con Stripe; app
+                            verificada por Google para usar Google Calendar; política de privacidad
+                            adaptada al RGPD y a menores; y más de 700 pruebas automáticas entre el
+                            frontend y el backend.
+                        </p>
+
+                        <!--
+                            GALERIA: capturas de FocusFlow con datos de demostracion.
+                            Salen de la ayuda de la propia app (frontend/public/media/ayuda/).
+                        -->
+                        <div class="project-gallery">
+                            <figure>
+                                <img src="assets/projects/focusflow-horario-foto.jpg"
+                                     alt="Horario de clase de FocusFlow rellenado por la IA a partir de una foto"
+                                     loading="lazy">
+                                <figcaption>Horario rellenado por la IA desde una foto</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/focusflow-agenda-semana.jpg"
+                                     alt="Vista semanal de la agenda de FocusFlow con las clases y las tareas de cada día"
+                                     loading="lazy">
+                                <figcaption>Semana con clases y tareas</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/focusflow-estadisticas.jpg"
+                                     alt="Estadísticas de FocusFlow con el tiempo de concentración por asignatura"
+                                     loading="lazy">
+                                <figcaption>Tiempo de concentración por asignatura</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/projects/focusflow-agenda-mes.jpg"
+                                     alt="Agenda mensual de FocusFlow con las tareas y los exámenes de una alumna"
+                                     loading="lazy">
+                                <figcaption>Agenda del mes con tareas y exámenes</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="project-actions">
+                            <!-- El codigo de FocusFlow es privado (la app cobra suscripciones):
+                                 no hay boton de "Ver codigo". El enlace no lleva noreferrer para
+                                 que las estadisticas de FocusFlow vean que la visita viene de aqui. -->
+                            <a href="https://focusflowup.com/"
+                               target="_blank"
+                               rel="noopener"
+                               class="btn btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir FocusFlow
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="divider"></div>
+
+                </article>
 
                 <article class="project-card fade-in">
 
